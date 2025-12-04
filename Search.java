@@ -14,7 +14,7 @@ public class Search {
         scan = new Scanner(System.in);
         while (!input.equals("exit")) {
             input = scan.nextLine();
-            print("");
+            System.out.println("");
             String[] split = input.split(" ");
             switch (split[0]) {
                 case "exit":
@@ -23,8 +23,8 @@ public class Search {
                     search(split);
                     break;
                 default:
-                    print("Unknown command");
-                    print("");
+                    System.out.println("Unknown command");
+                    System.out.println("");
             }
         }
         scan.close();
@@ -33,9 +33,9 @@ public class Search {
     private static void search(String[] args) {
         //Check if nbr of arguments are correct
         if (args.length != 3) {
-            print("ERROR");
-            print("search takes 2 arguments, not " + (args.length-1));
-            print("");
+            System.out.println("ERROR");
+            System.out.println("search takes 2 arguments, not " + (args.length-1));
+            System.out.println("");
             return;
         }
 
@@ -47,9 +47,7 @@ public class Search {
             reader = new Scanner(file);
 
         } catch (FileNotFoundException e) {
-            print("ERROR");
-            print("File with path " + args[2] + " cannot be found");
-            print("");
+            e.printStackTrace();
             return;
         }
 
@@ -59,28 +57,24 @@ public class Search {
             String next = reader.nextLine();
             if (next.toUpperCase().contains(args[1].toUpperCase())) {
                 nbrOfHits++;
-                print(next);
+                System.out.println(next);
             }
         }
         reader.close();
         if (nbrOfHits == 0) {
-            print("No matches found for " + args[1]);
-            print("");
+            System.out.println("No matches found for " + args[1]);
+            System.out.println("");
         } else {
-            print("");
+            System.out.println("");
         }
     }
 
     private static void initialPrints() {
-        print("Starting pattern search program");
-        print("");
-        print("Commands:");
-        print("exit");
-        print("search <pattern> <file>");
-        print("");
-    }
-
-    private static void print(String string) {
-        System.out.println(string);
+        System.out.println("Starting pattern search program");
+        System.out.println("");
+        System.out.println("Commands:");
+        System.out.println("exit");
+        System.out.println("search <pattern> <file>");
+        System.out.println("");
     }
 }
